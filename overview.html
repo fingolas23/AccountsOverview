@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Media in the Fediverse</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.semanticui.css">
+	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous"></script>
+		<script src="https://cdn.datatables.net/v/se/jq-3.7.0/moment-2.29.4/jszip-3.10.1/dt-2.2.2/af-2.7.0/b-3.2.2/b-colvis-3.2.2/b-html5-3.2.2/b-print-3.2.2/cr-2.0.4/date-1.5.5/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/rg-1.5.1/rr-1.5.0/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.js" integrity="sha384-3zGIQnZVx2VTB2F1KvSGXKSlp7cAbtNpqKEQuy8KGQelWxlDOkYcvE0p6u4x+3vF" crossorigin="anonymous"></script>
+	</head>
+	
+	
+	
+	
+	<body>
+	  <h1>Media Accounts in the Fediverse</h1>
+		<table id="example" class="ui celled table" style="text-align: center; margin: 0 auto; width: 100%; clear: both; border-collapse: collapse;">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Handle</th>
+					<th>Followers</th>
+					<th>Following</th>
+					<th>Posts</th>
+					<th>Per day</th>
+					<th>Last Status</th>
+					<th>Instance</th>
+					<th>Software</th>
+					<th>Created at</th>
+					<th>Bio</th>
+					<th>For Import</th>
+					<th>URL</th>
+				</tr>
+			</thead>
+		</table>
+		
+		<script>
+
+		new DataTable('#example', {
+					libs: {"targetFramework":"semanticui","js":["jquery","datatables","semanticui"],"css":["datatables"],"components":{"datatables":{"css":"https:\/\/cdn.datatables.net\/2.2.2\/css","js":"https:\/\/cdn.datatables.net\/2.2.2\/js","resolve":true},"autofill":{"css":"https:\/\/cdn.datatables.net\/autofill\/2.7.0\/css","js":"https:\/\/cdn.datatables.net\/autofill\/2.7.0\/js","resolve":true},"buttons":{"css":"https:\/\/cdn.datatables.net\/buttons\/3.2.2\/css","js":"https:\/\/cdn.datatables.net\/buttons\/3.2.2\/js","resolve":true},"colreorder":{"css":"https:\/\/cdn.datatables.net\/colreorder\/2.0.4\/css","js":"https:\/\/cdn.datatables.net\/colreorder\/2.0.4\/js","resolve":true},"editor":{"css":"..\/..\/css","js":"..\/..\/js","resolve":true},"fixedcolumns":{"css":"https:\/\/cdn.datatables.net\/fixedcolumns\/5.0.4\/css","js":"https:\/\/cdn.datatables.net\/fixedcolumns\/5.0.4\/js","resolve":true},"fixedheader":{"css":"https:\/\/cdn.datatables.net\/fixedheader\/4.0.1\/css","js":"https:\/\/cdn.datatables.net\/fixedheader\/4.0.1\/js","resolve":true},"keytable":{"css":"https:\/\/cdn.datatables.net\/keytable\/2.12.1\/css","js":"https:\/\/cdn.datatables.net\/keytable\/2.12.1\/js","resolve":true},"responsive":{"css":"https:\/\/cdn.datatables.net\/responsive\/3.0.4\/css","js":"https:\/\/cdn.datatables.net\/responsive\/3.0.4\/js","resolve":true},"rowgroup":{"css":"https:\/\/cdn.datatables.net\/rowgroup\/1.5.1\/css","js":"https:\/\/cdn.datatables.net\/rowgroup\/1.5.1\/js","resolve":true},"rowreorder":{"css":"https:\/\/cdn.datatables.net\/rowreorder\/1.5.0\/css","js":"https:\/\/cdn.datatables.net\/rowreorder\/1.5.0\/js","resolve":true},"scroller":{"css":"https:\/\/cdn.datatables.net\/scroller\/2.4.3\/css","js":"https:\/\/cdn.datatables.net\/scroller\/2.4.3\/js","resolve":true},"select":{"css":"https:\/\/cdn.datatables.net\/select\/3.0.0\/css","js":"https:\/\/cdn.datatables.net\/select\/3.0.0\/js","resolve":true},"searchbuilder":{"css":"https:\/\/cdn.datatables.net\/searchbuilder\/1.8.2\/css","js":"https:\/\/cdn.datatables.net\/searchbuilder\/1.8.2\/js","resolve":true},"searchpanes":{"css":"https:\/\/cdn.datatables.net\/searchpanes\/2.3.3\/css","js":"https:\/\/cdn.datatables.net\/searchpanes\/2.3.3\/js","resolve":true},"staterestore":{"css":"https:\/\/cdn.datatables.net\/staterestore\/1.4.1\/css","js":"https:\/\/cdn.datatables.net\/staterestore\/1.4.1\/js","resolve":true},"datetime":{"css":"https:\/\/cdn.datatables.net\/datetime\/1.5.5\/css\/dataTables.dateTime.min.css","js":"https:\/\/cdn.datatables.net\/datetime\/1.5.5\/js\/dataTables.dateTime.min.js"},"bootstrap":{"css":"https:\/\/maxcdn.bootstrapcdn.com\/bootstrap\/3.3.7\/css\/bootstrap.min.css","js":"https:\/\/maxcdn.bootstrapcdn.com\/bootstrap\/3.3.7\/js\/bootstrap.min.js"},"bootstrap4":{"css":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/twitter-bootstrap\/4.5.2\/css\/bootstrap.css","js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/popper.js\/1.14.3\/umd\/popper.min.js|https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/twitter-bootstrap\/4.5.2\/js\/bootstrap.min.js"},"bootstrap5":{"css":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/twitter-bootstrap\/5.3.0\/css\/bootstrap.min.css","js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/twitter-bootstrap\/5.3.0\/js\/bootstrap.bundle.min.js"},"bulma":{"css":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/bulma\/1.0.1\/css\/bulma.min.css"},"foundation":{"css":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/foundation\/6.4.3\/css\/foundation.min.css","js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/foundation\/6.4.3\/js\/foundation.min.js"},"jqueryui":{"css":"https:\/\/code.jquery.com\/ui\/1.13.2\/themes\/base\/jquery-ui.css","js":"https:\/\/code.jquery.com\/ui\/1.13.2\/jquery-ui.js"},"material":{"css":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/material-components-web\/14.0.0\/material-components-web.min.css","js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/material-components-web\/14.0.0\/material-components-web.min.js"},"semanticui":{"css":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/fomantic-ui\/2.9.2\/semantic.min.css","js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/fomantic-ui\/2.9.2\/semantic.min.js"},"uikit":{"css":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/uikit\/3.0.2\/css\/uikit.min.css","js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/uikit\/3.0.2\/js\/uikit.min.js"},"tailwindcss":{"css":"","js":"https:\/\/cdn.tailwindcss.com"},"font-awesome":{"css":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/font-awesome\/4.7.0\/css\/font-awesome.min.css"},"world-flags-sprite":{"css":"https:\/\/cdn.jsdelivr.net\/gh\/lafeber\/world-flags-sprite\/stylesheets\/flags32-both.css"},"buttons-html5":{"js":"https:\/\/cdn.datatables.net\/buttons\/3.2.2\/js\/buttons.html5.min.js"},"buttons-colvis":{"js":"https:\/\/cdn.datatables.net\/buttons\/3.2.2\/js\/buttons.colVis.min.js"},"buttons-print":{"js":"https:\/\/cdn.datatables.net\/buttons\/3.2.2\/js\/buttons.print.min.js"},"jquery":{"js":"https:\/\/code.jquery.com\/jquery-3.7.1.js"},"jszip":{"js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/jszip\/3.10.1\/jszip.min.js"},"pdfmake":{"js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/pdfmake\/0.2.7\/pdfmake.min.js"},"vfsfonts":{"js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/pdfmake\/0.2.7\/vfs_fonts.js"},"moment":{"js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/moment.js\/2.29.2\/moment.min.js"},"luxon":{"js":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/luxon\/2.3.1\/luxon.min.js"},"sparkline":{"js":"https:\/\/cdn.jsdelivr.net\/gh\/fnando\/sparkline\/dist\/sparkline.js"}}},
+			ajax: 'https://script.google.com/macros/s/AKfycbxNMLV8UdUSuUP4_O4Q9NBdYFKZbC3J-t3DAbM-khV0czyh0BlmIhRLUU6Cm0sroGuG/exec',
+			columns: [
+				{ data: 'Name' },
+				{ data: 'Handle' },
+				{ data: 'Followers' },
+				{ data: 'Following' },
+				{ data: 'Posts' },
+				{ data: 'Per day' },
+				{ data: 'Last Status' },
+				{ data: 'Instance' },
+				{ data: 'Software' },
+				{ data: 'Created at' },
+				{ data: 'Bio' },
+				{ data: 'For Import' },
+				{ data: 'URL' }
+			],
+			columnDefs: [
+				{targets: [6, 9], render: function (data) {return moment(data).format('MMMM Do YYYY') }},
+				{targets: [5], render: function ( data, type, row ) {return (1 * data).toFixed(1);}},
+				{className: 'dt-center', targets: '_all'},
+				{width: '2e0m', targets: [6, 9] }
+			], 
+			pageLength: 500
+		});
+	</script>
+</body>
+</html>
