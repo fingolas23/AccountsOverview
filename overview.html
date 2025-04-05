@@ -2,6 +2,20 @@
 <html>
 	<head>
 	  <title>Media in the Fediverse</title>
+	  <style>
+			body {
+			  font: 40%/1.45em "Helvetica Neue", HelveticaNeue, Verdana, Arial, Helvetica, sans-serif;
+			  margin: 0;
+			  padding: 0;
+			  color: #333;
+			  background-color: red;
+			}
+			h1  {
+			  font-size: 40;
+			}
+	  </style>
+	  
+	  
 		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 	    <link href="https://cdn.datatables.net/v/bs4/dt-2.2.2/datatables.min.css" rel="stylesheet">
@@ -33,7 +47,7 @@
 	
 	
 	<body>
-	  <h1>Verified Media Accounts in the Fediverse</h1>
+	  <h1 style="text-align: center;">Verified Media Accounts in the Fediverse</h1>
 
 		
 			<div id="left" style="width: 30%; margin: 1%; float: left; padding: 1em;">		
@@ -46,10 +60,10 @@
 				</script>	
 			</div>
 		
-		<p style="clear: both;"></p>
+		<p style="clear: both;">Built by <a href="https://social.heise.de/@mho">@mho@social.heise.de</a></p>
 		
 		<table id="example" class="table table-striped table-bordered" style="margin: 0 auto; width: 100%; clear: both; border-collapse: collapse; table-layout: fixed; word-wrap:break-word;">
-			<thead>
+		<thead>
 				<tr>
 					<th>Name</th>
 					<th>Handle</th>
@@ -62,7 +76,6 @@
 					<th>Software</th>
 					<th>Created at</th>
 					<th>Bio</th>
-					<th>For Import</th>
 					<th>URL</th>
 				</tr>
 			</thead>
@@ -82,7 +95,7 @@
 	  ajax: 'https://script.google.com/macros/s/AKfycbxNMLV8UdUSuUP4_O4Q9NBdYFKZbC3J-t3DAbM-khV0czyh0BlmIhRLUU6Cm0sroGuG/exec',
 			columns: [
 				{ data: 'Name' },
-				{ data: 'Handle' },
+				{ data: 'For Import' },
 				{ data: 'Followers' },
 				{ data: 'Following' },
 				{ data: 'Posts' },
@@ -92,19 +105,21 @@
 				{ data: 'Software' },
 				{ data: 'Created at' },
 				{ data: 'Bio' },
-				{ data: 'For Import' },
 				{ data: 'URL' }
 			],
 			columnDefs: [
-				{targets: [6, 9], render: function (data) {return moment(data).format('MMMM Do YYYY') }},
+				{targets: [6, 9], render: function (data) {return moment(data).format('MMMM Do YYYY');}},
 				{targets: [5], render: function ( data, type, row ) {return (1 * data).toFixed(1);}},
 				{className: 'dt-center', targets: '_all'},
 				{width: '6%', targets: [6, 9] },
 				{width: '5%', targets: [2, 3, 4 ,5] },
 				{width: '7%', targets: [0, 7, 8] }
 			], 
-			pageLength: 1000
-	  
+			pageLength: 1000,
+			lengthMenu: [
+				[100, 500, -1],
+				[100, 500, 'All']
+    ]
 	  
     });
  
