@@ -16,10 +16,22 @@
 	  </style>
 	  
 	  
-		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+		<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+		<script src="https://cdn.datatables.net/searchpanes/2.3.3/js/dataTables.searchPanes.js"></script>
+		<script src="https://cdn.datatables.net/searchpanes/2.3.3/js/searchPanes.dataTables.js"></script>
+		<script src="https://cdn.datatables.net/select/3.0.0/js/dataTables.select.js"></script>
+		<script src="https://cdn.datatables.net/select/3.0.0/js/select.dataTables.js"></script>		
+		<script src="https://cdn.datatables.net/searchbuilder/1.8.2/js/dataTables.searchBuilder.js"></script>
+		<script src="https://cdn.datatables.net/searchbuilder/1.8.2/js/searchBuilder.dataTables.js"></script>
+		<script src="https://cdn.datatables.net/datetime/1.5.5/js/dataTables.dateTime.min.js"></script>
+		
 
 	    <link href="https://cdn.datatables.net/v/bs4/dt-2.2.2/datatables.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+		<link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" rel="stylesheet">
+		<link href="https://cdn.datatables.net/searchbuilder/1.8.2/css/searchBuilder.dataTables.css" rel="stylesheet">
+		<link href="https://cdn.datatables.net/datetime/1.5.5/css/dataTables.dateTime.min.css" rel="stylesheet">
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous"></script>
@@ -107,6 +119,9 @@
 				{ data: 'Bio' },
 				{ data: 'URL' }
 			],
+			layout: {
+					top1: 'searchBuilder'
+			},
 			columnDefs: [
 				{targets: [6, 9], render: function (data) {return moment(data).format('MMMM Do YYYY');}},
 				{targets: [5], render: function ( data, type, row ) {return (1 * data).toFixed(1);}},
