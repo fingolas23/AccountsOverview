@@ -134,12 +134,20 @@
 			columnDefs: [
 				{targets: [6, 9], render: function (data) {return moment(data).format('MMMM Do YYYY');}},
 				{targets: [5], render: function ( data, type, row ) {return (1 * data).toFixed(1);}},
-				{className: 'dt-center', targets: '_all'},
+				
+				{"targets": 11, "data": "download_link", "render": function (data, type, row, meta) {return '<a href="' + data + '">' + data + '</a>';}},
+				
+				{targets: '_all', className: 'dt-head-center', },
+				{targets: [2, 3, 4, 5], className: 'dt-body-right' },
+				{targets: [0, 1, 6, 7, 8, 9, 10, 11], className: 'dt-center', },
+				
 				{width: '6%', targets: [6, 9] },
 				{width: '5%', targets: [2, 3, 4 ,5] },
 				{width: '7%', targets: [0, 7, 8] }
-			], 
-			pageLength: 1000,
+			], 			
+			order: [
+			],			
+			pageLength: 2000,
 			lengthMenu: [
 				[100, 500, -1],
 				[100, 500, 'All']
