@@ -2,6 +2,10 @@
 <html>
 	<head>
 	  <title>Media in the Fediverse</title>
+	  <meta property="og:url" content="https://fingolas.eu/fediverse/overview.html">
+			<meta property="og:title" content="Media in the Fediverse">
+			<meta property="og:image" content="https://datawrapper.dwcdn.net/fnBKn/full.png">
+			<meta property="og:site_name" content="All verified accounts by media organizations available from the Fediverse">
 	  <style>
 			@font-face {
 				font-family: SpaceGrotesk;
@@ -35,6 +39,14 @@
 		<script src="https://cdn.datatables.net/searchbuilder/1.8.2/js/dataTables.searchBuilder.js"></script>
 		<script src="https://cdn.datatables.net/searchbuilder/1.8.2/js/searchBuilder.dataTables.js"></script>
 		<script src="https://cdn.datatables.net/datetime/1.5.5/js/dataTables.dateTime.min.js"></script>
+		
+		<script src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.js"></script>
+		<script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+		<script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.html5.min.js"></script>
+		<script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.colVis.min.js"></script>
 		
 
 	    <link href="https://cdn.datatables.net/v/bs4/dt-2.2.2/datatables.min.css" rel="stylesheet">
@@ -71,15 +83,8 @@
 	<body>
 	  <h1 style="text-align: center;">Verified Media Accounts in the Fediverse</h1>
 
-		<div style="display: flex; justify-content: space-between; margin: 2%;">
-			
-			<div style="display: inline-block; max-width: 30%;" id="datawrapper-vis-fnBKn"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/fnBKn/embed.js" charset="utf-8" data-target="#datawrapper-vis-fnBKn"></script><noscript><img src="https://datawrapper.dwcdn.net/fnBKn/full.png" alt="" /></noscript></div>																		
-			
-			<div style="display: inline-block; margin-left: auto; margin-right: auto; width: 30%;" id="datawrapper-vis-JCU6s"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/JCU6s/embed.js" charset="utf-8" data-target="#datawrapper-vis-JCU6s"></script><noscript><img src="https://datawrapper.dwcdn.net/JCU6s/full.png" alt="" /></noscript></div>
-			
-			<div style="display: inline-block; max-width: 30%;" id="datawrapper-vis-MYkaq"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/MYkaq/embed.js" charset="utf-8" data-target="#datawrapper-vis-MYkaq"></script><noscript><img src="https://datawrapper.dwcdn.net/MYkaq/full.png" alt="" /></noscript></div>
-		
-		</div>
+		<h2 style="clear: both;">Some <a href="https://fingolas.eu/fediverse/graphs.html">visualizations</a></h2>
+
 		
 		<p style="clear: both;">Built by <a href="https://social.heise.de/@mho">@mho@social.heise.de</a></p>
 		
@@ -88,6 +93,8 @@
 				<tr>
 					<th>Name</th>
 					<th>Handle</th>
+					<th>Country</th>
+					<th>Language</th>
 					<th>Followers</th>
 					<th>Following</th>
 					<th>Posts</th>
@@ -114,9 +121,12 @@
     var table = $('#example').DataTable({
       orderCellsTop: true,
 	  ajax: 'https://script.google.com/macros/s/AKfycbxNMLV8UdUSuUP4_O4Q9NBdYFKZbC3J-t3DAbM-khV0czyh0BlmIhRLUU6Cm0sroGuG/exec',
+			
 			columns: [
 				{ data: 'Name' },
 				{ data: 'For Import' },
+				{ data: 'Country' },
+				{ data: 'Language' },
 				{ data: 'Followers' },
 				{ data: 'Following' },
 				{ data: 'Posts' },
@@ -129,21 +139,45 @@
 				{ data: 'URL' }
 			],
 			layout: {
-					top1: 'searchBuilder'
+					top1: 'searchBuilder',
+					topStart: {
+            buttons: [
+         /**       ['colvis'], **/
+				{
+                    extend: 'copyHtml5',
+                    exportOptions: {
+                        columns: [0, ':visible']
+                    }
+                },
+                {
+                    extend: 'csvHtml5',
+					text: 'CSV for importing visible accounts',
+                    exportOptions: {
+                        columns: [1],
+						rows: ':visible'
+                    }
+                },
+            ]
+        }
 			},
+			
+
+			
+			
 			columnDefs: [
-				{targets: [6, 9], render: function (data) {return moment(data).format('MMMM Do YYYY');}},
-				{targets: [5], render: function ( data, type, row ) {return (1 * data).toFixed(1);}},
+				{targets: [8, 11], render: function (data) {return moment(data).format('MMMM Do YYYY');}},
+				{targets: [7], render: function ( data, type, row ) {return (1 * data).toFixed(1);}},
 				
-				{"targets": 11, "data": "download_link", "render": function (data, type, row, meta) {return '<a href="' + data + '">' + data + '</a>';}},
+				{"targets": 13, "data": "download_link", "render": function (data, type, row, meta) {return '<a href="' + data + '">' + data + '</a>';}},
 				
 				{targets: '_all', className: 'dt-head-center', },
-				{targets: [2, 3, 4, 5], className: 'dt-body-right' },
-				{targets: [0, 1, 6, 7, 8, 9, 10, 11], className: 'dt-center', },
+				{targets: [4, 5, 6, 7], className: 'dt-body-right' },
+				{targets: [0, 1, 2, 3, 8, 9, 10, 11, 12, 13], className: 'dt-center', },
 				
-				{width: '6%', targets: [6, 9] },
-				{width: '5%', targets: [2, 3, 4 ,5] },
-				{width: '7%', targets: [0, 7, 8] }
+				{width: '6%', targets: [8, 11] },
+				{width: '5%', targets: [3, 4, 5, 6, 7] },
+				{width: '4%', targets: [2] },
+				{width: '7%', targets: [0, 9, 10] }
 			], 			
 			order: [
 			],			
