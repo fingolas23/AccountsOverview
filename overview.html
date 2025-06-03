@@ -2,6 +2,7 @@
 <html>
 	<head>
 	  <title>Media in the Fediverse</title>
+	  <meta charset="UTF-8">
 	  <meta property="og:url" content="https://fingolas.eu/fediverse/overview.html">
 			<meta property="og:title" content="Media in the Fediverse">
 			<meta property="og:image" content="https://datawrapper.dwcdn.net/fnBKn/full.png">
@@ -14,24 +15,32 @@
 				font-weight: 400;
 				src: url(fonts/SpaceGrotesk-SemiBold.ttf);
 			}
-			body {
-			  font-family: SpaceGrotesk;
+			@font-face {
+				font-family: Kanit;
+				font-optical-sizing: auto;
+				font-style: normal;
+				font-weight: 400;
+				src: url(fonts/Kanit-Light.ttf);
+			}
+			.table {
+			  font-family: Kanit;
 			  margin: 0;
 			  padding: 0;
-			  color: #333;
-			  background-color: red;
 			}
 			h1  {
 			  font-size: 40;
-			  font-family: SpaceGrotesk;
+			  font-family: Kanit;
 			  text-shadow: 3px 3px 3px #ababab;
+			}
+			.dt-empty {
+			  font-size:10em;
 			}
 			
 	  </style>
 	  
 	  
 		<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-		<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+		<script src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
 		<script src="https://cdn.datatables.net/searchpanes/2.3.3/js/dataTables.searchPanes.js"></script>
 		<script src="https://cdn.datatables.net/searchpanes/2.3.3/js/searchPanes.dataTables.js"></script>
 		<script src="https://cdn.datatables.net/select/3.0.0/js/dataTables.select.js"></script>
@@ -86,7 +95,7 @@
 		<h2 style="clear: both;">Some <a href="https://fingolas.eu/fediverse/graphs.html">visualizations</a></h2>
 
 		
-		<p style="clear: both;">Built by <a href="https://social.heise.de/@mho">@mho@social.heise.de</a></p>
+		<p style="clear: both; text-align: right; margin-right: 4em;">Built by <a href="https://social.heise.de/@mho">@mho@social.heise.de</a></p>
 		
 		<table id="example" class="table table-striped table-bordered" style="margin: 0 auto; width: 100%; clear: both; border-collapse: collapse; table-layout: fixed; word-wrap:break-word;">
 		<thead>
@@ -165,8 +174,9 @@
 			
 			
 			columnDefs: [
-				{targets: [8, 11], render: function (data) {return moment(data).format('MMMM Do YYYY');}},
-				{targets: [7], render: function ( data, type, row ) {return (1 * data).toFixed(1);}},
+				{targets: [8, 11], render: DataTable.render.datetime('Do MMM YYYY')},
+				{targets: [4, 5, 6], render: DataTable.render.number( '.', ',', 0 )},
+				{targets: [7], render: DataTable.render.number( '.', ',', 1 )},
 				
 				{"targets": 13, "data": "download_link", "render": function (data, type, row, meta) {return '<a href="' + data + '">' + data + '</a>';}},
 				
