@@ -38,6 +38,9 @@
 			.dt-empty {
 			  font-size:10em;
 			}
+			.small{
+			  font-size: 40%;
+			}
 			
 	  </style>
 	  
@@ -183,6 +186,7 @@
 				{targets: [8, 11], render: DataTable.render.datetime('Do MMM YYYY')},
 				{targets: [4, 5, 6], render: DataTable.render.number( '.', ',', 0 )},
 				{targets: [7], render: DataTable.render.number( '.', ',', 1 )},
+				{targets: [12], className: "small"},
 				
 				{"targets": 13, "data": "download_link", "render": function (data, type, row, meta) {return '<a href="' + data + '">' + data + '</a>';}},
 				
